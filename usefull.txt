@@ -1,0 +1,20 @@
+pip install 'fastapi-users[sqlalchemy]'
+
+DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+alembic revision --autogenerate -m "Initial"
+
+alembic upgrade head
+
+uvicorn main:app --reload
+
+insert into role values (1, 'user', null), (2, 'admin', null);
+
+select * from public.user;
+select * from public.role;
+select * from public.product;
+
+
+DROP TABLE IF EXISTS public.user;
+DROP TABLE IF EXISTS public.role;
+DROP TABLE IF EXISTS public.alembic_version;
