@@ -1,7 +1,9 @@
-from sqlalchemy import MetaData, Table, Column, Integer, String, Enum, JSON, Float
+from sqlalchemy import Table, Column, Integer, String, Enum, JSON, Float
+from sqlalchemy.dialects.postgresql import JSONB
+
 from .schemas import CurrencyEnum, AvailabilityEnum
 
-metadata = MetaData()
+from database import metadata
 
 product = Table(
     "product",
@@ -14,5 +16,5 @@ product = Table(
     Column("old_price", Float, nullable=True),
     Column("currency", Enum(CurrencyEnum), nullable=False),
     Column("availability", Enum(AvailabilityEnum), nullable=False),
-    Column("images", JSON),
+    Column("images", JSONB),  # Используем JSONB для хранения JSON-подобных данных
 )

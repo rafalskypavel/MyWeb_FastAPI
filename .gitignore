@@ -6,4 +6,5 @@ node_modules
 .env
 venv
 
-.usefull.txt
+usefull.txt
+Redis-x64-5.0.14.1.zip

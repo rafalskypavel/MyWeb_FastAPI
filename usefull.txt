@@ -1,3 +1,4 @@
+pip freeze > requirements.txt
 pip install 'fastapi-users[sqlalchemy]'
 
 DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
@@ -8,12 +9,53 @@ alembic upgrade head
 
 uvicorn main:app --reload
 
+https://github1s.com/long2ice/fastapi-cache
+
+pytest -v -s tests/
+
+
 insert into role values (1, 'user', null), (2, 'admin', null);
+
+{
+  "email": "admin_admin@mail.ru",
+  "password": "admin",
+  "is_active": true,
+  "is_superuser": false,
+  "is_verified": false,
+  "username": "admin_admin",
+  "role_id": 2
+}
 
 select * from public.user;
 select * from public.role;
 select * from public.product;
 
+{
+  "id": 25518,
+  "name": "Пневмопистолет FROSP ST64С по легкому бетону и кирпичу",
+  "brand": "FROSP",
+  "description": "вау",
+  "price": 7900,
+  "old_price": 0,
+  "currency": "RUB",
+  "availability": "in_stock",
+  "images": {"Photo 1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/st64c.png"}
+}
+
+{
+  "id": 759,
+  "name": "Гвоздезабивной пистолет FROSP CN-100",
+  "brand": "FROSP",
+  "description": "такое себе",
+  "price": 34700,
+  "old_price": 0,
+  "currency": "RUB",
+  "availability": "in_stock",
+  "images": {
+	  "Photo 1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_111_1.png",
+	  "Photo 2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_1.png"
+  }
+}
 
 DROP TABLE IF EXISTS public.user;
 DROP TABLE IF EXISTS public.role;
