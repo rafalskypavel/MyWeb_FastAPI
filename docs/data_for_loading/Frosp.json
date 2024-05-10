@@ -1,0 +1,222 @@
+[
+  {
+    "id": 57882,
+    "name": "Пневматический гайковерт ПГ-130 1/2\"",
+    "brand": "FROSP",
+    "description": "Powerful tool for work and gaming",
+    "price": 11900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_2.jpg?itok=c42xsYvW",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_1.jpg?itok=PffsTS4W"
+    }
+  },
+  {
+    "id": 759,
+    "name": "Гвоздезабивной пистолет CN-100",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 49900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_111_1.png",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100-3.jpg"
+    }
+  },
+  {
+    "id": 25518,
+    "name": "Пневмопистолет ST64С по легкому бетону и кирпичу",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 7900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/st64c.png"
+    }
+  },
+  {
+    "id": 1564,
+    "name": "Скобозабивной пневмопистолет F9140",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 3500,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140.jpg",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140-3.jpg"
+    }
+  },
+    {
+    "id": 578682,
+    "name": "Пневматический гайковерт ПГ-130 1/2\"",
+    "brand": "FROSP",
+    "description": "Powerful tool for work and gaming",
+    "price": 11900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_2.jpg?itok=c42xsYvW",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_1.jpg?itok=PffsTS4W"
+    }
+  },
+  {
+    "id": 7590,
+    "name": "Гвоздезабивной пистолет CN-100",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 49900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_111_1.png",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100-3.jpg"
+    }
+  },
+  {
+    "id": 252518,
+    "name": "Пневмопистолет ST64С по легкому бетону и кирпичу",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 7900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/st64c.png"
+    }
+  },
+  {
+    "id": 15564,
+    "name": "Скобозабивной пневмопистолет F9140",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 3500,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140.jpg",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140-3.jpg"
+    }
+  },
+    {
+    "id": 657882,
+    "name": "Пневматический гайковерт ПГ-130 1/2\"",
+    "brand": "FROSP",
+    "description": "Powerful tool for work and gaming",
+    "price": 11900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_2.jpg?itok=c42xsYvW",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_1.jpg?itok=PffsTS4W"
+    }
+  },
+  {
+    "id": 7595,
+    "name": "Гвоздезабивной пистолет CN-100",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 49900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_111_1.png",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100-3.jpg"
+    }
+  },
+  {
+    "id": 255148,
+    "name": "Пневмопистолет ST64С по легкому бетону и кирпичу",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 7900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/st64c.png"
+    }
+  },
+  {
+    "id": 15364,
+    "name": "Скобозабивной пневмопистолет F9140",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 3500,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140.jpg",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140-3.jpg"
+    }
+  },
+    {
+    "id": 571882,
+    "name": "Пневматический гайковерт ПГ-130 1/2\"",
+    "brand": "FROSP",
+    "description": "Powerful tool for work and gaming",
+    "price": 11900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_2.jpg?itok=c42xsYvW",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/styles/product-full/public/images/frosp_pg-130_1.jpg?itok=PffsTS4W"
+    }
+  },
+  {
+    "id": 7594,
+    "name": "Гвоздезабивной пистолет CN-100",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 49900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100_111_1.png",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/cn-100-3.jpg"
+    }
+  },
+  {
+    "id": 255118,
+    "name": "Пневмопистолет ST64С по легкому бетону и кирпичу",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 7900,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/st64c.png"
+    }
+  },
+  {
+    "id": 15643,
+    "name": "Скобозабивной пневмопистолет F9140",
+    "brand": "FROSP",
+    "description": "Latest tool with great features",
+    "price": 3500,
+    "old_price": 0,
+    "currency": "RUB",
+    "availability": "in_stock",
+    "images": {
+      "image1": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140.jpg",
+      "image2": "https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/9140-3.jpg"
+    }
+  }
+]

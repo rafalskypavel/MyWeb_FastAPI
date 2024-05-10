@@ -1,8 +1,9 @@
+import json
 import time
 
-from fastapi import APIRouter, Depends, Query, HTTPException
+from fastapi import APIRouter, Depends, Query, HTTPException, UploadFile, File
 from fastapi_cache.decorator import cache
-from sqlalchemy import update, delete, and_
+from sqlalchemy import update, delete, and_, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -18,37 +19,14 @@ router = APIRouter(
 
 
 @router.get("/")
-async def get_all_products(
+async def get_products(
         ids: str = Query(None, description="Filter products by IDs, separated by comma"),
         brands: str = Query(None, description="Filter products by brands, separated by comma"),
         availabilities: str = Query(None, description="Filter products by availabilities, separated by comma"),
         session: AsyncSession = Depends(get_async_session)
 ):
     try:
-        id_list = [int(id.strip()) for id in ids.split(",")] if ids else []
-        brand_list = [brand.strip() for brand in brands.split(",")] if brands else []
-        availability_list = [availability.strip() for availability in
-                             availabilities.split(",")] if availabilities else []
-
-        filters = []
-
-        if id_list:
-            filters.append(product.c.id.in_(id_list))
-
-        if brand_list:
-            filters.append(product.c.brand.in_(brand_list))
-
-        if availability_list:
-            filters.append(product.c.availability.in_(availability_list))
-
-        query = select(product)
-
-        if filters:
-            query = query.where(and_(*filters))
-
-        result = await session.execute(query)
-        products = result.fetchall()
-
+        products = await fetch_products(ids, brands, availabilities, session)
         if not products:
             error_message = (f"The requested products with IDs: '{ids}', "
                              f"Brands: '{brands}', "
@@ -68,6 +46,23 @@ async def get_all_products(
         return products_data
     except Exception as e:
         await handle_error(session, e)
+
+async def fetch_products(ids: str, brands: str, availabilities: str, session: AsyncSession):
+    id_list = [int(id.strip()) for id in ids.split(",")] if ids else []
+    brand_list = [brand.strip() for brand in brands.split(",")] if brands else []
+    availability_list = [availability.strip() for availability in availabilities.split(",")] if availabilities else []
+    filters = []
+    if id_list:
+        filters.append(product.c.id.in_(id_list))
+    if brand_list:
+        filters.append(product.c.brand.in_(brand_list))
+    if availability_list:
+        filters.append(product.c.availability.in_(availability_list))
+    query = select(product)
+    if filters:
+        query = query.where(and_(*filters))
+    result = await session.execute(query)
+    return result.fetchall()
 
 
 @router.post("/")
@@ -114,6 +109,34 @@ async def delete_product(product_ids: list[int], session: AsyncSession = Depends
                 "details": "Products deleted successfully"}
     except Exception as e:
         await handle_error(session, e)
+
+
+
+
+@router.post("/upload_products/")
+async def upload_products(file: UploadFile = File(...), session: AsyncSession = Depends(get_async_session)):
+    try:
+        # Чтение данных из загруженного файла JSON
+        data = await file.read()
+        products_data = json.loads(data)
+
+        # Сохранение данных в базу данных
+        for product_data in products_data:
+            new_product = ProductCreate(**product_data)
+            stmt = insert(product).values(**new_product.dict())
+            await session.execute(stmt)
+        await session.commit()
+
+        return {"status": "success", "details": "Products uploaded successfully"}
+    except Exception as e:
+        await handle_error(session, e)
+
+
+
+
+
+
+
 
 
 router2 = APIRouter(
