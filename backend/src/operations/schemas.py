@@ -25,6 +25,8 @@ class ProductCreate(BaseModel):
     currency: CurrencyEnum = Field(..., title="Currency", description="Currency code")
     availability: AvailabilityEnum = Field(..., title="Availability", description="Product availability status")
     images: dict = Field(..., title="Images", description="Product images as JSON")
+    group_id: int = Field(None, title="Group ID", description="ID of the product group")
+    subgroup_id: int = Field(None, title="Subgroup ID", description="ID of the product subgroup")
 
 
 class ProductUpdate(ProductCreate):

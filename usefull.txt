@@ -68,3 +68,7 @@ select * from public.product;
 DROP TABLE IF EXISTS public.user;
 DROP TABLE IF EXISTS public.role;
 DROP TABLE IF EXISTS public.alembic_version;
+
+
+https://tailwindcss.com/docs/caption-side
+https://ant.design/components/popover

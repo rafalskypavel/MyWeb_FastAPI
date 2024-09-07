@@ -1,136 +1,126 @@
-import React, { useEffect, useState } from 'react';
-import { Pagination, List, Card, Layout, Menu, theme , Avatar} from 'antd';
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
+// App.jsx
+import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
-import { EditOutlined, EllipsisOutlined, SettingOutlined, MoreOutlined } from '@ant-design/icons';
-import ProductCard from './components/ProductCard';
+import { Layout, Menu, List, theme } from 'antd';
+import { UserOutlined, VideoCameraOutlined, CloudOutlined, AppstoreOutlined, ShopOutlined } from '@ant-design/icons';
+import ItemCard from './components/ProductCard';
+import MyForm from './components/Form';
+import MyPagination from './components/Pagination';
+import CustomSearchInput from './components/SearchInput';
+
 const { Header, Content, Footer, Sider } = Layout;
-const { Meta } = Card;
 
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
-
-const itemRender = (_, type, originalElement) => {
-  if (type === 'prev') {
-    return <a>Previous</a>;
-  }
-  if (type === 'next') {
-    return <a>Next</a>;
-  }
-  return originalElement;
-};
+const menuItems = [
+  { key: '1', icon: <UserOutlined />, label: 'Войти' },
+  { key: '2', icon: <VideoCameraOutlined />, label: 'Корзина' },
+  { key: '3', icon: <CloudOutlined />, label: 'Каталог' },
+  { key: '4', icon: <AppstoreOutlined />, label: 'Избранное' },
+  { key: '5', icon: <ShopOutlined />, label: 'О компании' },
+];
 
 const App = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
+  const { colorBgContainer, borderRadiusLG } = theme.useToken().token;
   const [products, setProducts] = useState([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const [limit, setLimit] = useState(4);
+  const [offset, setOffset] = useState(0);
 
-  const fetchProducts = () => {
-    axios.get('http://127.0.0.1:8000/operations/').then((response) => {
-      console.log('Response:', response.data);
-      setProducts(response.data);
-    }).catch((error) => {
+const fetchFilteredProducts = async (filter) => {
+  try {
+    console.log('Filter query:', filter); // Log the filter query to check if it's correct
+    const url = `http://127.0.0.1:8000/operations/filter?${filter}`;
+    const response = await axios.get(url);
+    setProducts(response.data);
+  } catch (error) {
+    console.error('Error fetching filtered products:', error);
+  }
+};
+
+
+  const fetchProducts = useCallback(async () => {
+    try {
+      const url = `http://127.0.0.1:8000/operations/?limit=${limit}&offset=${offset}`;
+      const response = await axios.get(url);
+      setProducts(response.data.products_data);
+      setTotalItems(response.data.total_count);
+    } catch (error) {
       console.error('Error fetching products:', error);
-    });
-  };
+    }
+  }, [limit, offset]);
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
+
+  const handleLimitChange = (newLimit) => {
+    setLimit(newLimit);
+    setOffset(0);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setOffset((page - 1) * limit);
+  };
+
+  const handleNavClick = ({ key }) => {
+    setIsFormOpen(key === '1');
+  };
+
+  const renderProducts = () => (
+    <List
+      grid={{ gutter: 33, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
+      dataSource={products}
+      renderItem={(item) => (
+        <List.Item>
+          <ItemCard item={item} />
+        </List.Item>
+      )}
+    />
+  );
 
   return (
-    <Layout hasSider>
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
-      </Sider>
-      <Layout
-        style={{
-          marginLeft: 200,
-        }}
-      >
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-
-        <Content
-          style={{
-            margin: '24px 16px 0',
-            overflow: 'initial',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              textAlign: 'center',
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-
-            <List
-              grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }}
-              dataSource={products}
-              renderItem={(item) => (
-                <List.Item>
-                  <ProductCard item={item} /> {/* Замените Card на ProductCard и передайте item как пропс */}
-                </List.Item>
-              )}
+    <Router>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider width={180} style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
+          <div className="logo" />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['3']} onClick={handleNavClick}>
+            {menuItems.map(item => (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </Sider>
+        <Layout style={{ marginLeft: 180 }}>
+          <Header style={{ padding: 0, position: 'fixed', width: '100%', zIndex: 1000, background: colorBgContainer }}>
+            <img
+              src="https://www.pnevmoteh.ru/sites/pnevmoteh.ru/files/images/brands/frosp_logo_brend_0.svg"
+              alt="Frosp Logo"
+              style={{ width: 130, height: 50, display: 'inline-block', marginRight: 5 }}
             />
-
-                />
-            />
-
-
-            {/* Добавляем Pagination */}
-            <Pagination total={500} itemRender={itemRender} />
-          </div>
-        </Content>
-
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+            <CustomSearchInput placeholder="Введите текст для поиска" onSearch={fetchFilteredProducts} style={{ width: 400, marginLeft: 5 }} />
+          </Header>
+          <Content style={{ margin: '80px 16px 0', overflow: 'initial' }}>
+            <div style={{ padding: 24, textAlign: 'center', background: colorBgContainer, borderRadius: borderRadiusLG }}>
+              {isFormOpen ? <MyForm onClose={() => setIsFormOpen(false)} /> : renderProducts()}
+            </div>
+            {!isFormOpen && (
+              <MyPagination
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+                handleLimitChange={handleLimitChange}
+                totalItems={totalItems}
+                limit={limit}
+              />
+            )}
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Ant Design ©{new Date().getFullYear()} Created by Ant UED</Footer>
+        </Layout>
       </Layout>
-    </Layout>
+    </Router>
   );
 };
 

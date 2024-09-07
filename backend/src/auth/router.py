@@ -18,12 +18,13 @@ protected_router = APIRouter()
 @protected_router.get("/protected-route", response_model=dict)
 def protected_route(user: User = Depends(get_current_user)):
     """Get the protected route for authenticated users."""
-    return {"message": f"Hello, {user.username}"}
+    return {"message": f"Welcome to the protected route, {user.username}!"}
 
 @router.get("/unprotected-route", response_model=dict)
 def unprotected_route():
     """Get the unprotected route for anonymous users."""
-    return {"message": "Hello, anonymous"}
+    return {"message": "Welcome to the unprotected route! Feel free to explore."}
+
 
 
 router.include_router(protected_router)
